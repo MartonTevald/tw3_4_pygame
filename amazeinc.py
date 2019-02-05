@@ -128,8 +128,6 @@ def main():
                 map1.append(char)
             printmap1()
             file.close()
-        
-
     elif x == 2:
         os.system('clear')
         print("\nControls:\n Use W,A,S,D keys to move.\n W = UP\n S = Down\n A = Left\n D = Right")
