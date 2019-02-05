@@ -33,26 +33,32 @@ def main():
             if (i + 1) % size == 0:
                 print(n)
                 n = ''
+    def win_restart():
+        os.system('clear')
+        printmap1()
+        print('\nYou Win ' + name + '!')
+        restart = input('\nDo you want to start a new game? [y/n]: ')
+        if restart == 'y':
+            main()
+        elif restart == 'n':
+            os.system('clear')
+            print('Good Bye!')
+            quit()
+
+    def finish_line(a):
+        j=map1.index('o ')
+        map1.insert(a, 'o ')
+        del map1[j]
+        del map1[j]
+        map1.insert(j, '  ')
+        win_restart()
 
     def D_KEY():
         j = map1.index('o ')
         if map1[j+1] == '▉ ' :
             j
         elif map1[j+1] == '▒ ':
-            del map1[j]
-            map1.insert(j+1, 'o ')
-            del map1[j]
-            map1.insert(j, '  ')
-            os.system('clear')
-            printmap1()
-            print('\nYou Win ' + name + '!')
-            restart = input('\nDo you want to start a new game? [y/n]: ')
-            if restart == 'y':
-                main()
-            elif restart == 'n':
-                os.system('clear')
-                print('Good Bye!')
-                quit()
+            finish_line(j+1)
         else: 
             del map1[j]
             map1.insert(j+1, 'o ')
@@ -62,20 +68,7 @@ def main():
         if map1[j-1] == '▉ ':
             j
         elif map1[j-1] == '▒ ':
-            del map1[j]
-            map1.insert(j-1, 'o ')
-            del map1[j]
-            map1.insert(j, '  ')
-            os.system('clear')
-            printmap1()
-            print('\nYou Win ' + name + '!')
-            restart = input('\nDo you want to start a new game? [y/n]: ')
-            if restart == 'y':
-                main()
-            elif restart == 'n':
-                os.system('clear')
-                print('Good Bye!')
-                quit()
+            finish_line(j-1)
         else:
             del map1[j]
             map1.insert(j-1, 'o ')
