@@ -33,6 +33,7 @@ def main():
             if (i + 1) % size == 0:
                 print(n)
                 n = ''
+
     def win_restart():
         os.system('clear')
         printmap1()
@@ -53,6 +54,10 @@ def main():
         map1.insert(j, '  ')
         win_restart()
 
+    def re_print():
+        os.system('clear')
+        printmap1()
+
     def D_KEY():
         j = map1.index('o ')
         if map1[j+1] == '▉ ' :
@@ -62,6 +67,7 @@ def main():
         else: 
             del map1[j]
             map1.insert(j+1, 'o ')
+        re_print()
 
     def A_KEY():
         j=map1.index('o ')
@@ -72,6 +78,7 @@ def main():
         else:
             del map1[j]
             map1.insert(j-1, 'o ')
+        re_print()
 
     def W_KEY():
         j=map1.index('o ')
@@ -82,6 +89,7 @@ def main():
             map1.insert(j, '  ')
             del map1[j-size]
             map1.insert(j-size, 'o ')
+        re_print()
 
     def S_KEY():
         j=map1.index('o ')
@@ -92,17 +100,19 @@ def main():
             map1.insert(j, '  ')
             del map1[j+size]
             map1.insert(j+size, 'o ')
+        re_print()
 
     os.system('clear')
     print('Welcome ' + name + '!\n')
     print('\nMain menu:\n 1.New Game\n 2.Guide\n 3.Exit\n')
     x = int(input('Select: '))
+    os.system('clear')
 
     if x == 1:
-        os.system('clear')
         print('\nChoose difficulty level:\n 1. Easy\n 2. Medium\n 3. Hard\n')
         mapnum = int(input('Select: '))
         play = 'y'
+        os.system('clear')
         if mapnum == 1:
             size = 9
             map1 = map2
@@ -115,10 +125,11 @@ def main():
             size = 23
             file = open("map3.txt", "r")
             for char in file:
-                char = file.read(2)
                 map1.append(char)
             printmap1()
             file.close()
+        
+
     elif x == 2:
         os.system('clear')
         print("\nControls:\n Use W,A,S,D keys to move.\n W = UP\n S = Down\n A = Left\n D = Right")
@@ -131,30 +142,19 @@ def main():
         print('Good Bye!')
         quit()
 
-    os.system('clear')
-    printmap1()
 
     while play == 'y':
         movement=input("\nMove(w,a,s,d): ")
         if movement == "d":
             D_KEY()
-            os.system('clear')
-            printmap1()
         elif movement == "a":
             A_KEY()
-            os.system('clear')
-            printmap1()
         elif movement == "w":
             W_KEY()
-            os.system('clear')
-            printmap1()
         elif movement == "s":
-            S_KEY()
-            os.system('clear')
-            printmap1()       
+            S_KEY()     
         else:
-            os.system('clear')
-            printmap1()
+            re_print()
             print("\nEnter the correct key!")
         
 main()
