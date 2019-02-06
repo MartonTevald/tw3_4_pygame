@@ -177,14 +177,10 @@ def main():
         elif a == 2:
             story(5)
             imp_map3()
-<<<<<<< HEAD
         else:
             win_restart()
 
 
-=======
-        
->>>>>>> 0ab5b4a2f0375e48b9ab11177a76069ede615bb9
     def imp_map2():
         nonlocal map1
         map1 = []
@@ -193,12 +189,7 @@ def main():
         size = 15
         import_map('map2.txt')
         move_func()
-<<<<<<< HEAD
-  
-
-=======
         
->>>>>>> 0ab5b4a2f0375e48b9ab11177a76069ede615bb9
     def imp_map3():
         nonlocal map1
         map1 = []
@@ -237,8 +228,4 @@ def main():
             quit()
     gameplay()
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 0ab5b4a2f0375e48b9ab11177a76069ede615bb9
 main()
