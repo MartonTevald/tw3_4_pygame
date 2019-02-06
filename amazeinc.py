@@ -202,27 +202,36 @@ def main():
     def gameplay():
         game_menu()
         try:
-            x = int(input('Select: '))
-            if x > 3 or x < 1:
+            mainmenu_select = int(input('Select: '))
+            if mainmenu_select > 3 or mainmenu_select < 1:
                 gameplay()
         except ValueError:
             gameplay()
         os.system('clear')
-        if x == 1:
+        if mainmenu_select == 1:
+            print('\nChose a difficulty:\n 1. Easy (5 lives)\n 2. Normal (3 lives)\n 3. Dark Souls (1 life)\n')
+            diff_menu_select = int(input('Select: '))
+            nonlocal lives
+            if diff_menu_select == 1:
+                lives = 5
+            elif diff_menu_select == 2:
+                lives = 3
+            elif diff_menu_select == 3:
+                lives = 1
             nonlocal size
             size = 9
             story(1)
             os.system('clear')
             import_map('map1.txt')
             move_func()
-        elif x == 2:
+        elif mainmenu_select == 2:
             os.system('clear')
             print("\nControls:\n Use W,A,S,D keys to move.\n W = UP\n S = Down\n A = Left\n D = Right")
             print("\nDeveloped by A_Maze.inc")
             b = input('\nPress enter to continue. ')
             if b == '':
                 main()
-        elif x == 3:
+        elif mainmenu_select == 3:
             os.system('clear')
             print('Good Bye!')
             quit()
