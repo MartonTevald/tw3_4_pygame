@@ -163,6 +163,8 @@ def main():
             elif movement == "s":
                 S_KEY()
                 re_print()
+            elif movement == "gm powers":  # cheat code to jump to next map
+                finish_line(map1.index('o '))
             else:
                 re_print()
                 print("\nEnter the correct key!")
@@ -180,7 +182,6 @@ def main():
         else:
             win_restart()
 
-
     def imp_map2():
         nonlocal map1
         map1 = []
@@ -189,7 +190,7 @@ def main():
         size = 15
         import_map('map2.txt')
         move_func()
-        
+
     def imp_map3():
         nonlocal map1
         map1 = []
