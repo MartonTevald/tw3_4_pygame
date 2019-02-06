@@ -65,30 +65,30 @@ def main():
         a += 1
         next_map()
 
-    def story(c):
-        if c == 1:
+    def story(scenario):
+        if scenario == 1:
             os.system('clear')
             print("The adventurer carefully picked his way through confines of the dark cave. \nHis torch flickered and danced in the moist air. He could still hear \nthe distant drums echoing in the faint breeze in the tunnel behind him. \nSuddenly, his torch went out, and his world was plunged into darkness. \nBut not complete darkness, there was a faint light ahead, a hazy, green, \ntinge light…")
             d = input("\nPress enter to continue.")
-        elif c == 2:
+        elif scenario == 2:
             os.system('clear')
             print("Shuffling forward, he startled, as his hands touched the rough outline of \nvegetation. Wielding his machete, he started cutting an opening and the \nlight grew brighter. Suddenly he stumbled, falling forward, rolling and \nrolling into bright sunlight and tall, thick grass.")
             d = input("\nPress enter to continue.")
-        elif c == 3:
+        elif scenario == 3:
             os.system('clear')
             print("He found himself standing in a vast open plain with high mountains in the \ndistance encompassing the area in a huge crescent. Despite the terrors \nof the long grass there was an ominous feeling of vulnerability in this \nopen environment. As if it was some kind of... focal point for a devious, \nbut as yet unsprung trap. Towards the far end of the plain a large \noutcropping could be seen, rising sharply, like a dark, black mesa. \nAs swiftly as his heart would beat, he made for the higher ground...")
             d = input("\nPress enter to continue.")
-        elif c == 4:
+        elif scenario == 4:
             os.system('clear')
             print("The adventurer gazed down from the mesa towards the thick jungle that was \nnow between him and the mountains. Mountains that were so much closer \nnow, looming over him like claws, their shadow casting darkness stretching \ntowards him over the vast greenery. Yet, looking closer, in the distance, \nhe could see a clearing. Rising gently from within, was a ghost \nlike smirk. A welcome...?\n…or a warning?")
             d = input("\nPress enter to continue.")
-        elif c == 5:
+        elif scenario == 5:
             os.system('clear')
             print("He ran, as hard as he could, the shouts and wails of the cannibals were all \ntoo close. Darts zipping past his cheeks as he half ran, half fell \ndown the steep jungle hill: not this time will he plan of waiting at bottom \nof the hill with a plain and easy escape. Alas, there was a cave in the \nfoot of the mountains, perhaps, he could reach it, he might have a chance… ")
             d = input("\nPress enter to continue.")
-        elif c == 6:
+        elif scenario == 6:
             os.system('clear')
-            print("Oblivious to him, the pursuers have halted with a sudden sensation of fear \nand silence. As if they feared to tread further into the valley, lest \nthey disturb something not of this world...")
+            print("Oblivious to him, the pursuers have halted with a sudden sensation of dread \nand silence. As if they feared to tread further into the valley, lest \nthey disturb something not of this world...")
             d = input("\nPress enter to continue.")
 
     def re_print():
@@ -227,6 +227,7 @@ def main():
             move_func()
         elif mainmenu_select == 2:
             os.system('clear')
+            print("\nThe Story:\nYou control an adventurer who, after stealing a valued artifact from a native tribe, is being chased. Guide him through the various maps to safety.")
             print("\nControls:\n Use W,A,S,D keys to move.\n W = UP\n S = Down\n A = Left\n D = Right")
             print("\nDeveloped by A_Maze.inc")
             b = input('\nPress enter to continue. ')
