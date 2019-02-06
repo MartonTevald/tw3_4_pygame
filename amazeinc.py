@@ -4,9 +4,11 @@ name = input('Please enter your name: ')
 
 
 def main():
-    lives = 3
-
+    
     map1 = []
+    lives = 3
+    size = 0
+    a = 0
 
     def printmap1():
         print(f"You have {lives} lives left\n")
@@ -18,14 +20,14 @@ def main():
                 n = ''
 
     def import_map(filename):
-            with open(filename) as f:
-                line = f.read().split(',')
-                for i in line:
-                    if i.startswith('\n'):
-                        map1.append(i[1:])
-                    else:
-                        map1.append(i)
-            printmap1()
+        with open(filename) as f:
+            line = f.read().split(',')
+            for i in line:
+                if i.startswith('\n'):
+                    map1.append(i[1:])
+                else:
+                    map1.append(i)
+        printmap1()
 
     def win_restart():
         os.system('clear')
@@ -34,21 +36,28 @@ def main():
             print("\nYou have lost all of your lives!")
         else:
             print('\nYou Win ' + name + '!')
-        restart = input('\nDo you want to start a new game? [y/n]: ')
-        if restart == 'y':
-            main()
-        elif restart == 'n':
-            os.system('clear')
-            print('Good Bye!')
-            quit()
+        restart = ''       
+        while restart != 'y' or 'n': 
+            restart = input('\nDo you want to start a new game? [y/n]: ')    
+            if restart == 'y':
+                main()
+            elif restart == 'n':
+                os.system('clear')
+                print('Good Bye!')
+                quit()
+            else:
+                re_print()
+                print('\nOnly <y> or <n> is accepted!')
 
-    def finish_line(a):
+    def finish_line(b):
         j = map1.index('o ')
-        map1.insert(a, 'o ')
+        map1.insert(b, 'o ')
         del map1[j]
         del map1[j]
         map1.insert(j, '  ')
-        win_restart()
+        nonlocal a
+        a += 1
+        next_map()
 
     def re_print():
         os.system('clear')
@@ -102,61 +111,81 @@ def main():
             del map1[j + size]
             map1.insert(j + size, 'o ')
 
-    os.system('clear')
-    print('Welcome ' + name + '!\n')
-    print('\nMain menu:\n 1.New Game\n 2.Guide\n 3.Exit\n')
-    x = int(input('Select: '))
-    os.system('clear')
-
-    if x == 1:
+    def game_menu():
         os.system('clear')
-        print('\nChoose difficulty level:\n 1. Easy\n 2. Medium\n 3. Hard\n')
-        mapnum = int(input('Select: '))
-        play = 'y'
-        if mapnum == 1:
-            size = 9
-            import_map(r'/home/marton1812/codecool/codes/3rd_tw/tw3_4_pygame/map1.txt')
-            printmap1()
-        elif mapnum == 2:
-            size = 15
-            import_map()
-            printmap1()
-        elif mapnum == 3:
-            size = 23
-            import_map()
-            printmap1()
-    elif x == 2:
-        os.system('clear')
-        print("\nControls:\n Use W,A,S,D keys to move.\n W = UP\n S = Down\n A = Left\n D = Right")
-        print("\nDeveloped by A_Maze.inc")
-        b = input('\nPress enter to continue. ')
-        if b == '':
-            main()
-    elif x == 3:
-        os.system('clear')
-        print('Good Bye!')
-        quit()
+        print('Welcome ' + name + '!\n')
+        print('\nMain menu:\n 1.New Game\n 2.Guide\n 3.Exit\n')
 
-    os.system('clear')
-    printmap1()
+    def move_func():
+        while True:
+            movement = input("\nMove(w,a,s,d): ")
+            if movement == "d":
+                D_KEY()
+                re_print()
+            elif movement == "a":
+                A_KEY()
+                re_print()
+            elif movement == "w":
+                W_KEY()
+                re_print()
+            elif movement == "s":
+                S_KEY()
+                re_print()
+            else:
+                re_print()
+                print("\nEnter the correct key!")
+            if lives == 0:
+                win_restart()
 
-    while play == 'y':
-        movement = input("\nMove(w,a,s,d): ")
-        if movement == "d":
-            D_KEY()
-            re_print()
-        elif movement == "a":
-            A_KEY()
-            re_print()
-        elif movement == "w":
-            W_KEY()
-            re_print()
-        elif movement == "s":
-            S_KEY()
-            re_print()
+    def next_map():
+        nonlocal a
+        if a == 1:
+            imp_map2()
         else:
-            re_print()
-            print("\nEnter the correct key!")
-        if lives == 0:
-            win_restart()
+            imp_map3()
+        
+
+    def imp_map2():
+        nonlocal map1
+        map1 = []
+        os.system('clear')
+        nonlocal size
+        size = 15
+        import_map('map2.txt')
+        move_func()
+        
+
+    def imp_map3():
+        nonlocal map1
+        map1 = []
+        os.system('clear')
+        nonlocal size
+        size = 9
+        import_map('map1.txt')
+        move_func()
+
+    def gameplay():
+        game_menu()
+        x = int(input('Select: '))
+        os.system('clear')
+        if x == 1:
+            nonlocal size
+            size = 9
+            import_map('map1.txt')
+            move_func()
+        elif x == 2:
+            os.system('clear')
+            print("\nControls:\n Use W,A,S,D keys to move.\n W = UP\n S = Down\n A = Left\n D = Right")
+            print("\nDeveloped by A_Maze.inc")
+            b = input('\nPress enter to continue. ')
+            if b == '':
+                main()
+        elif x == 3:
+            os.system('clear')
+            print('Good Bye!')
+            quit()
+    gameplay()
+
+    
+
 main()
