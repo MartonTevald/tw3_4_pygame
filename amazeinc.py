@@ -177,10 +177,14 @@ def main():
         elif a == 2:
             story(5)
             imp_map3()
+<<<<<<< HEAD
         else:
             win_restart()
 
 
+=======
+        
+>>>>>>> 0ab5b4a2f0375e48b9ab11177a76069ede615bb9
     def imp_map2():
         nonlocal map1
         map1 = []
@@ -189,20 +193,29 @@ def main():
         size = 15
         import_map('map2.txt')
         move_func()
+<<<<<<< HEAD
   
 
+=======
+        
+>>>>>>> 0ab5b4a2f0375e48b9ab11177a76069ede615bb9
     def imp_map3():
         nonlocal map1
         map1 = []
         os.system('clear')
         nonlocal size
-        size = 9
-        import_map('map1.txt')
+        size = 23
+        import_map('map3.txt')
         move_func()
 
     def gameplay():
         game_menu()
-        x = int(input('Select: '))
+        try:
+            x = int(input('Select: '))
+            if x > 3 or x < 1:
+                gameplay()
+        except ValueError:
+            gameplay()
         os.system('clear')
         if x == 1:
             nonlocal size
@@ -224,5 +237,8 @@ def main():
             quit()
     gameplay()
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0ab5b4a2f0375e48b9ab11177a76069ede615bb9
 main()
