@@ -1,6 +1,6 @@
 import os
 
-name = input('Please enter your name: ')
+name = input('\nPlease enter your name: ')
 
 
 def main():
@@ -72,7 +72,7 @@ def main():
             d = input("\nPress enter to continue.")
         elif c == 2:
             os.system('clear')
-            print("Shuffling forward, he startled, as his hands touched the rough outline of \nvegetation. Wielding his machete, he started cutting a opening and the \nlight grew brighter. Suddenly he stumbled, falling forward, rolling and \nrolling into bright sunlight and tall, thick grass.")
+            print("Shuffling forward, he startled, as his hands touched the rough outline of \nvegetation. Wielding his machete, he started cutting an opening and the \nlight grew brighter. Suddenly he stumbled, falling forward, rolling and \nrolling into bright sunlight and tall, thick grass.")
             d = input("\nPress enter to continue.")
         elif c == 3:
             os.system('clear')
