@@ -14,7 +14,7 @@ def main():
         print('Welcome ' + name + '!\n')
         print('\nMain menu:\n 1.New Game\n 2.Guide\n 3.Exit\n')
 
-    # sub menus and game start
+    # main menu selections and game start
     def gameplay():
         game_menu()
         try:
@@ -25,18 +25,7 @@ def main():
             gameplay()
         os.system('clear')
         if mainmenu_select == 1:
-            print('\nChose a difficulty:\n 1. Easy (5 lives)\n 2. Normal (3 lives)\n 3. Dark Souls (1 life)\n')
-            diff_menu_select = int(input('Select: '))
-            nonlocal lives
-            if diff_menu_select == 1:
-                lives = 5
-            elif diff_menu_select == 2:
-                lives = 3
-            elif diff_menu_select == 3:
-                lives = 1
-            story(1)
-            os.system('clear')
-            load_map('map1.txt', 9)
+            difficulty_select()
         elif mainmenu_select == 2:
             os.system('clear')
             print("\nThe Story:\nYou control an adventurer who, after stealing a valued artifact from a native tribe, is being chased. Guide him through the various maps to safety.")
@@ -45,10 +34,35 @@ def main():
             submenu_select = input('\nPress enter to continue. ')
             if submenu_select == '':
                 main()
+            else:
+                main()
         elif mainmenu_select == 3:
             os.system('clear')
             print('Good Bye!')
             quit()
+
+    # newgame submenu
+    def difficulty_select():
+        try:
+            print('\nChose a difficulty:\n 1. Easy (5 lives)\n 2. Normal (3 lives)\n 3. Dark Souls (1 life)\n')
+            diff_menu_select = int(input('Select: '))
+            if diff_menu_select >= 1 and diff_menu_select <= 3:
+                nonlocal lives
+                if diff_menu_select == 1:
+                    lives = 5
+                elif diff_menu_select == 2:
+                    lives = 3
+                elif diff_menu_select == 3:
+                    lives = 1
+                story(1)
+                os.system('clear')
+                load_map('map1.txt', 9)
+            else:
+                os.system('clear')
+                difficulty_select()
+        except ValueError:
+            os.system('clear')
+            difficulty_select()
 
     # movement functions
     def move_func():
