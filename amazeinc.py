@@ -55,16 +55,16 @@ def main():
         while True:
             movement = input("\nMove(w,a,s,d): ")
             if movement == "d":
-                left_right_key(1)
+                movement_key(1)
                 re_print()
             elif movement == "a":
-                left_right_key(-1)
+                movement_key(-1)
                 re_print()
             elif movement == "w":
-                up_down_key(-size)
+                movement_key(-size)
                 re_print()
             elif movement == "s":
-                up_down_key(size)
+                movement_key(size)
                 re_print()
             elif movement == "gm powers":  # cheat code to jump to next map
                 finish_line(level.index('o '))
@@ -74,7 +74,7 @@ def main():
             if lives == 0:
                 win_restart()
 
-    def left_right_key(way):
+    def movement_key(way):
         position = level.index('o ')
         if level[position + way] == '▉ ':
             position
@@ -82,16 +82,6 @@ def main():
             lives = lives - 1
         elif level[position + way] == '▒ ':
             finish_line(position + way)
-        else:
-            del level[position]
-            level.insert(position + way, 'o ')
-
-    def up_down_key(way):
-        position = level.index('o ')
-        if level[position + way] == '▉ ':
-            position
-            nonlocal lives
-            lives = lives - 1
         else:
             del level[position]
             level.insert(position, '  ')
