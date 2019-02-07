@@ -212,11 +212,7 @@ def main():
         if lives == 0:
             print("\nYou have lost all of your lives!")
         else:
-            print(
-                '\nCongratulations ' +
-                name +
-                '!'
-                '\nYou managed to get away from the bloodthirsty cannibals and hid in a cave safely... \n...or did you?')
+            print('\nCongratulations ' + name + '!' + '\nYou managed to get away from the bloodthirsty cannibals and hid in a cave safely... \n...or did you?')
         restart = ''
         while restart != 'y' or 'n':
             restart = input('\nDo you want to start a new game? [y/n]: ')
