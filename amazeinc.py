@@ -55,16 +55,16 @@ def main():
         while True:
             movement = input("\nMove(w,a,s,d): ")
             if movement == "d":
-                D_KEY()
+                left_right_key(1)
                 re_print()
             elif movement == "a":
-                A_KEY()
+                left_right_key(-1)
                 re_print()
             elif movement == "w":
-                W_KEY()
+                up_down_key(-size)
                 re_print()
             elif movement == "s":
-                S_KEY()
+                up_down_key(size)
                 re_print()
             elif movement == "gm powers":  # cheat code to jump to next map
                 finish_line(level.index('o '))
@@ -74,53 +74,29 @@ def main():
             if lives == 0:
                 win_restart()
 
-    def W_KEY():
+    def left_right_key(way):
         position = level.index('o ')
-        if level[position - size] == '▉ ':
+        if level[position + way] == '▉ ':
+            position
+            nonlocal lives
+            lives = lives - 1
+        elif level[position + way] == '▒ ':
+            finish_line(position + way)
+        else:
+            del level[position]
+            level.insert(position + way, 'o ')
+
+    def up_down_key(way):
+        position = level.index('o ')
+        if level[position + way] == '▉ ':
             position
             nonlocal lives
             lives = lives - 1
         else:
             del level[position]
             level.insert(position, '  ')
-            del level[position - size]
-            level.insert(position - size, 'o ')
-
-    def A_KEY():
-        position = level.index('o ')
-        if level[position - 1] == '▉ ':
-            position
-            nonlocal lives
-            lives = lives - 1
-        elif level[position - 1] == '▒ ':
-            finish_line(position - 1)
-        else:
-            del level[position]
-            level.insert(position - 1, 'o ')
-
-    def S_KEY():
-        position = level.index('o ')
-        if level[position + size] == '▉ ':
-            position
-            nonlocal lives
-            lives = lives - 1
-        else:
-            del level[position]
-            level.insert(position, '  ')
-            del level[position + size]
-            level.insert(position + size, 'o ')
-
-    def D_KEY():
-        position = level.index('o ')
-        if level[position + 1] == '▉ ':
-            position
-            nonlocal lives
-            lives = lives - 1
-        elif level[position + 1] == '▒ ':
-            finish_line(position + 1)
-        else:
-            del level[position]
-            level.insert(position + 1, 'o ')
+            del level[position + way]
+            level.insert(position + way, 'o ')
 
     # game story texts
     def story(scenario):
