@@ -8,13 +8,13 @@ def main():
     size = 0
     map_num = 0
 
-    # main menu
+    # main menu, where it all begins
     def game_menu():
         os.system('clear')
         print('Welcome ' + name + '!\n')
         print('\nMain menu:\n 1.New Game\n 2.Guide\n 3.Exit\n')
 
-    # main menu selections and game start
+    # main menu selections and game start (important, don't accidentally delete again)
     def gameplay():
         game_menu()
         try:
@@ -29,7 +29,8 @@ def main():
         elif mainmenu_select == 2:
             os.system('clear')
             print("\nThe Story:\nYou control an adventurer who, after stealing a valued artifact from a native tribe, is being chased. Guide him through the various maps to safety.")
-            print("\nControls:\n Use W,A,S,D keys to move.\n W = UP\n S = Down\n A = Left\n D = Right")
+            print(
+                "\nControls:\n Use W,A,S,D keys to move.\n W = UP\n S = Down\n A = Left\n D = Right")
             print("\nDeveloped by A_Maze.inc")
             submenu_select = input('\nPress enter to continue. ')
             if submenu_select == '':
@@ -41,10 +42,11 @@ def main():
             print('Good Bye!')
             quit()
 
-    # newgame submenu
+    # submenu of newgame submenu
     def difficulty_select():
         try:
-            print('\nChose a difficulty:\n 1. Easy (5 lives)\n 2. Normal (3 lives)\n 3. Dark Souls (1 life)\n')
+            print(
+                '\nChose a difficulty:\n 1. Easy (5 lives)\n 2. Normal (3 lives)\n 3. Dark Souls (1 life)\n')
             diff_menu_select = int(input('Select: '))
             if diff_menu_select >= 1 and diff_menu_select <= 3:
                 nonlocal lives
@@ -64,7 +66,7 @@ def main():
             os.system('clear')
             difficulty_select()
 
-    # movement functions
+    # movement functions for 24/7 user input support (incl super-secret gm cheatcode)
     def move_func():
         while True:
             movement = input("\nMove(w,a,s,d): ")
@@ -102,34 +104,47 @@ def main():
             del level[position + way]
             level.insert(position + way, 'o ')
 
-    # game story texts
+    # game story texts for imporved immersion depth
     def story(scenario):
         if scenario == 1:
             os.system('clear')
+            # readbedtimestory(scenario-1)
             print("The adventurer carefully picked his way through confines of the dark cave. \nHis torch flickered and danced in the moist air. He could still hear \nthe distant drums echoing in the faint breeze in the tunnel behind him. \nSuddenly, his torch went out, and his world was plunged into darkness. \nBut not complete darkness, there was a faint light ahead, a hazy, green, \ntinge light…")
             cont = input("\nPress enter to continue.")
         elif scenario == 2:
             os.system('clear')
+            print(" # This one is read from a file:\n")
+            readbedtimestory(scenario-1)
+            print(" # This one is hard-coded and arbitrarily truncated for demonstration purposes:\n")
             print("Shuffling forward, he startled, as his hands touched the rough outline of \nvegetation. Wielding his machete, he started cutting an opening and the \nlight grew brighter. Suddenly he stumbled, falling forward, rolling and \nrolling into bright sunlight and tall, thick grass.")
             cont = input("\nPress enter to continue.")
         elif scenario == 3:
             os.system('clear')
+            # readbedtimestory(scenario-1)
             print("He found himself standing in a vast open plain with high mountains in the \ndistance encompassing the area in a huge crescent. Despite the terrors \nof the long grass there was an ominous feeling of vulnerability in this \nopen environment. As if it was some kind of... focal point for a devious, \nbut as yet unsprung trap. Towards the far end of the plain a large \noutcropping could be seen, rising sharply, like a dark, black mesa. \nAs swiftly as his heart would beat, he made for the higher ground...")
             cont = input("\nPress enter to continue.")
         elif scenario == 4:
             os.system('clear')
+            # readbedtimestory(scenario-1)
             print("The adventurer gazed down from the mesa towards the thick jungle that was \nnow between him and the mountains. Mountains that were so much closer \nnow, looming over him like claws, their shadow casting darkness stretching \ntowards him over the vast greenery. Yet, looking closer, in the distance, \nhe could see a clearing. Rising gently from within, was a ghost \nlike smirk. A welcome...?\n…or a warning?")
             cont = input("\nPress enter to continue.")
         elif scenario == 5:
             os.system('clear')
+            # readbedtimestory(scenario-1)
             print("He ran, as hard as he could, the shouts and wails of the cannibals were all \ntoo close. Darts zipping past his cheeks as he half ran, half fell \ndown the steep jungle hill: not this time will he plan of waiting at bottom \nof the hill with a plain and easy escape. Alas, there was a cave in the \nfoot of the mountains, perhaps, he could reach it, he might have a chance… ")
             cont = input("\nPress enter to continue.")
         elif scenario == 6:
             os.system('clear')
+            # readbedtimestory(scenario-1)
             print("Oblivious to him, the pursuers have halted with a sudden sensation of dread \nand silence. As if they feared to tread further into the valley, lest \nthey disturb something not of this world...")
             cont = input("\nPress enter to continue.")
 
-    # map handling
+    def readbedtimestory(scenario):
+        with open('story.txt') as f:
+            read = f.readlines()
+            print(read[scenario])
+
+    # map handling for enhanced UTF-8 and .txt experience
     def next_map():
         nonlocal map_num
         if map_num == 1:
@@ -173,7 +188,7 @@ def main():
         os.system('clear')
         printlevel()
 
-    # next map counter
+    # next map counter for dynamic level loading system implementation
     def finish_line(lastpos):
         position = level.index('o ')
         level.insert(lastpos, 'o ')
@@ -197,7 +212,11 @@ def main():
         if lives == 0:
             print("\nYou have lost all of your lives!")
         else:
-            print('\nCongratulations ' + name + '!' '\nYou managed to get away from the bloodthirsty cannibals and hid in a cave safely... \n...or did you?')
+            print(
+                '\nCongratulations ' +
+                name +
+                '!'
+                '\nYou managed to get away from the bloodthirsty cannibals and hid in a cave safely... \n...or did you?')
         restart = ''
         while restart != 'y' or 'n':
             restart = input('\nDo you want to start a new game? [y/n]: ')
@@ -211,5 +230,7 @@ def main():
                 re_print()
                 print('\nOnly <y> or <n> is accepted!')
     gameplay()
+
+
 name = input('\nPlease enter your name: ')
 main()
