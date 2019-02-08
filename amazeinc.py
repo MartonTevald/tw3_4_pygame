@@ -29,8 +29,7 @@ def main():
         elif mainmenu_select == 2:
             os.system('clear')
             print("\nThe Story:\nYou control an adventurer who, after stealing a valued artifact from a native tribe, is being chased. Guide him through the various maps to safety.")
-            print(
-                "\nControls:\n Use W,A,S,D keys to move.\n W = UP\n S = Down\n A = Left\n D = Right")
+            print("\nControls:\n Use W,A,S,D keys to move.\n W = UP\n S = Down\n A = Left\n D = Right")
             print("\nDeveloped by A_Maze.inc")
             submenu_select = input('\nPress enter to continue. ')
             if submenu_select == '':
@@ -45,8 +44,7 @@ def main():
     # submenu of newgame submenu
     def difficulty_select():
         try:
-            print(
-                '\nChose a difficulty:\n 1. Easy (5 lives)\n 2. Normal (3 lives)\n 3. Dark Souls (1 life)\n')
+            print('\nChose a difficulty:\n 1. Easy (5 lives)\n 2. Normal (3 lives)\n 3. Dark Souls (1 life)\n')
             diff_menu_select = int(input('Select: '))
             if diff_menu_select >= 1 and diff_menu_select <= 3:
                 nonlocal lives
@@ -108,35 +106,27 @@ def main():
     def story(scenario):
         if scenario == 1:
             os.system('clear')
-            # readbedtimestory(scenario-1)
-            print("The adventurer carefully picked his way through confines of the dark cave. \nHis torch flickered and danced in the moist air. He could still hear \nthe distant drums echoing in the faint breeze in the tunnel behind him. \nSuddenly, his torch went out, and his world was plunged into darkness. \nBut not complete darkness, there was a faint light ahead, a hazy, green, \ntinge light…")
+            readbedtimestory(scenario-1)
             cont = input("\nPress enter to continue.")
         elif scenario == 2:
             os.system('clear')
-            print(" # This one is read from a file:\n")
             readbedtimestory(scenario-1)
-            print(" # This one is hard-coded and arbitrarily truncated for demonstration purposes:\n")
-            print("Shuffling forward, he startled, as his hands touched the rough outline of \nvegetation. Wielding his machete, he started cutting an opening and the \nlight grew brighter. Suddenly he stumbled, falling forward, rolling and \nrolling into bright sunlight and tall, thick grass.")
             cont = input("\nPress enter to continue.")
         elif scenario == 3:
             os.system('clear')
-            # readbedtimestory(scenario-1)
-            print("He found himself standing in a vast open plain with high mountains in the \ndistance encompassing the area in a huge crescent. Despite the terrors \nof the long grass there was an ominous feeling of vulnerability in this \nopen environment. As if it was some kind of... focal point for a devious, \nbut as yet unsprung trap. Towards the far end of the plain a large \noutcropping could be seen, rising sharply, like a dark, black mesa. \nAs swiftly as his heart would beat, he made for the higher ground...")
+            readbedtimestory(scenario-1)
             cont = input("\nPress enter to continue.")
         elif scenario == 4:
             os.system('clear')
-            # readbedtimestory(scenario-1)
-            print("The adventurer gazed down from the mesa towards the thick jungle that was \nnow between him and the mountains. Mountains that were so much closer \nnow, looming over him like claws, their shadow casting darkness stretching \ntowards him over the vast greenery. Yet, looking closer, in the distance, \nhe could see a clearing. Rising gently from within, was a ghost \nlike smirk. A welcome...?\n…or a warning?")
+            readbedtimestory(scenario-1)
             cont = input("\nPress enter to continue.")
         elif scenario == 5:
             os.system('clear')
-            # readbedtimestory(scenario-1)
-            print("He ran, as hard as he could, the shouts and wails of the cannibals were all \ntoo close. Darts zipping past his cheeks as he half ran, half fell \ndown the steep jungle hill: not this time will he plan of waiting at bottom \nof the hill with a plain and easy escape. Alas, there was a cave in the \nfoot of the mountains, perhaps, he could reach it, he might have a chance… ")
+            readbedtimestory(scenario-1)
             cont = input("\nPress enter to continue.")
         elif scenario == 6:
             os.system('clear')
-            # readbedtimestory(scenario-1)
-            print("Oblivious to him, the pursuers have halted with a sudden sensation of dread \nand silence. As if they feared to tread further into the valley, lest \nthey disturb something not of this world...")
+            readbedtimestory(scenario-1)
             cont = input("\nPress enter to continue.")
 
     def readbedtimestory(scenario):
