@@ -19,7 +19,7 @@ def main():
         game_menu()
         try:
             mainmenu_select = int(input('Select: '))
-            if mainmenu_select > 3 or mainmenu_select < 1:
+            if mainmenu_select > 3 or mainmenu_select < 1: #mainmenu_select in [1, 2, 3]
                 gameplay()
         except ValueError:
             gameplay()
@@ -220,3 +220,19 @@ def main():
 
 name = input('\nPlease enter your name: ')
 main()
+
+'''
+review:
+
+good:
+variable naming (noun)
+no code outside functions
+lenght of functions not too big
+
+bad:
+global variables remain
+nested functions in this type of use not particularly preferable: useless to put everything within main()
+function naming (should be: verb + something)
+functions do not end (can cause stackoverflow)
+not used "return" in functions
+'''
